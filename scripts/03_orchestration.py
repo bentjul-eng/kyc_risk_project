@@ -18,10 +18,10 @@ from pyspark.sql.functions import (
 # General settings
 # -----------------------
 
-BRONZE_PATH = "dbfs:/Workspace/Users/jusoares_flor@hotmail.com/kyc_risk_project/data/csv_sources"
-SILVER_PATH = "dbfs:/mnt/datalake/silver/kyc_risk_analysis"
-GOLD_PATH = "dbfs:/mnt/datalake/gold/kyc_risk_analysis"
-EVALUATION_DATE = "2025-06-10"
+bronze_path = "dbfs:/Workspace/Users/jusoares_flor@hotmail.com/kyc_risk_project/data/csv_sources"
+silver_path = "dbfs:/mnt/datalake/silver/kyc_risk_analysis"
+gold_path = "dbfs:/mnt/datalake/gold/kyc_risk_analysis"
+
 
 # -----------------------
 # auxiliary functions
@@ -34,7 +34,7 @@ def load_raw():
         .format("csv")
         .option("header", "true")
         .option("inferSchema", "true")
-        .load(f"{BRONZE_PATH}/clients.csv")
+        .load(f"{bronze_path}/clients.csv")
     )
 
     transactions_df = (
@@ -42,7 +42,7 @@ def load_raw():
         .format("csv")
         .option("header", "true")
         .option("inferSchema", "true")
-        .load(f"{BRONZE_PATH}/transactions.csv")
+        .load(f"{bronze_path}/transactions.csv")
     )
 
     high_risk_countries_df = (
@@ -50,7 +50,7 @@ def load_raw():
         .format("csv")
         .option("header", "true")
         .option("inferSchema", "true")
-        .load(f"{BRONZE_PATH}/high_risk_countries.csv")
+        .load(f"{bronze_path}/high_risk_countries.csv")
     )
 
     return clients_df, transactions_df, high_risk_countries_df
@@ -84,9 +84,9 @@ def enrich_risk(clients_df, transactions_df, high_risk_countries_df):
             + col("is_minor").cast("int") * 1,
         )
         .withColumn("risk_flag", when(col("risk_score") >= 2, lit(True)).otherwise(lit(False)))
-        .withColumn("evaluation_timestamp", to_date(lit(EVALUATION_DATE)))
+        .withColumn("evaluation_timestamp", lit("2025-06-10 12:00:00").cast("timestamp"))
+        .withColumn("evaluation_date", to_date(col("evaluation_timestamp")))
         .withColumn("event_id", concat_ws("_", col("client_id"), col("transaction_id")))
-    )
 
     return risk_df
 
@@ -97,7 +97,8 @@ def save_to_silver(risk_df):
         risk_df.write
         .format("delta")
         .mode("overwrite")
-        .save(f"{SILVER_PATH}/client_transactions_risk")
+        .partitionBy("evaluation_date")
+        .save(f"{silver}/client_transactions_risk")
     )
 
 
@@ -124,7 +125,7 @@ def save_to_gold(aggr_df):
         aggr_df.write
         .format("delta")
         .mode("overwrite")
-        .save(f"{GOLD_PATH}/aggregated_client_risk")
+        .save(f"{gold_path}/aggregated_client_risk")
     )
 
 

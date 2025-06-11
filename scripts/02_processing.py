@@ -11,9 +11,9 @@ from pyspark.sql.functions import (
 )
 
 bronze_path = "dbfs:/Workspace/Users/jusoares_flor@hotmail.com/kyc_risk_project/data/csv_sources"
-SILVER_PATH = "dbfs:/mnt/datalake/silver/kyc_risk_analysis"
-GOLD_PATH = "dbfs:/mnt/datalake/gold/kyc_risk_analysis"
-EVALUATION_DATE = "2025-06-10"
+silver_path = "dbfs:/mnt/datalake/silver/kyc_risk_analysis"
+gold_path = "dbfs:/mnt/datalake/gold/kyc_risk_analysis"
+evaluation_timestamp = "2025-06-10 12:00:00"
 
 
 bronze_path = "dbfs:/Workspace/Users/jusoares_flor@hotmail.com/kyc_risk_project/data/csv_sources"
@@ -45,9 +45,9 @@ high_risk_countries_df = (
 from pyspark.sql.functions import col
 
 joined_df = (
-    transactions_df.alias("t")                               # transações
-    .join(clients_df.alias("c"), on="client_id", how="inner") # + clientes
-    .join(                                                   # + países de risco
+    transactions_df.alias("t")                              
+    .join(clients_df.alias("c"), on="client_id", how="inner") 
+    .join(                                                  
         high_risk_countries_df.alias("h")
             .withColumnRenamed("country", "high_risk_country"),
         col("c.country") == col("h.high_risk_country"),
@@ -83,8 +83,12 @@ risk_df = joined_df \
     ) \
     .withColumn(
         "evaluation_timestamp",
-        to_date(lit("2025-06-10"))
+        (lit("2025-06-10 12:00:00").cast("timestamp"))
     ) \
+    .withColumn(
+        "evaluation_date",
+        (to_date(col("evaluation_timestamp")))
+    )\
     .withColumn(
         "event_id",
         concat_ws(col("client_id"), col("transaction_id"))
@@ -95,7 +99,8 @@ display(risk_df)
 (risk_df.write
         .format("delta")
         .mode("overwrite")
-        .save(f"{SILVER_PATH}/client_transactions_risk"))
+        .partitionBy("evaluation_date")
+        .save(f"{silver_path}/client_transactions_risk"))
 
 aggr_df = (
         risk_df.groupBy("client_id")
@@ -116,8 +121,10 @@ display(aggr_df)
         aggr_df.write
         .format("delta")
         .mode("overwrite")
-        .save(f"{GOLD_PATH}/aggregated_client_risk")
+        .save(f"{gold_path}/aggregated_client_risk")
     )
+
+display(high_risk_countries_df)
 
 
 
