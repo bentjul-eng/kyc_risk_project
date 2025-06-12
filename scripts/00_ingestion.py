@@ -1,3 +1,5 @@
+
+  #MODULARIZAR E COLOCAR PRA SER CHAMADA NA ORQUESTRATION.PY
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, IntegerType, StringType, FloatType, DateType
 import random
@@ -40,7 +42,7 @@ for i in range(1, n_clients + 1):
         random.choice(countries)
     ))
 
-# Define esquema para o dataframe de clientes
+#Defines schema for the clients dataframe
 clients_schema = StructType([
     StructField("client_id", IntegerType(), False),
     StructField("name", StringType(), False),
@@ -50,7 +52,7 @@ clients_schema = StructType([
 
 clients_df = spark.createDataFrame(clients, schema=clients_schema)
 
-# Salvar CSV - para salvar exatamente como CSV simples, desabilitar cabeçalho na pasta e salvar particionado, usar modo overwrite
+#Save CSV - to save exactly as plain CSV, disable header in folder and save partitioned, use overwrite mode
 clients_df.coalesce(1).write.mode("overwrite").option("header", True).csv(f"{output_path}/clients.csv")
 
 # --- Generate transactions ---
@@ -88,6 +90,26 @@ high_risk_schema = StructType([
 
 high_risk_df = spark.createDataFrame(high_risk, schema=high_risk_schema)
 high_risk_df.coalesce(1).write.mode("overwrite").option("header", True).csv(f"{output_path}/high_risk_countries.csv")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
