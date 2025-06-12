@@ -1,5 +1,3 @@
-
-  #MODULARIZAR E COLOCAR PRA SER CHAMADA NA ORQUESTRATION.PY
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, IntegerType, StringType, FloatType, DateType
 import random

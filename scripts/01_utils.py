@@ -31,7 +31,7 @@ def load_bronze_data(spark, bronze_path):
 
 
 def save_to_silver(df, silver_path):
-    """Salva os dados enriquecidos na camada Silver em formato Delta particionado por data."""
+    """Saves the enriched data in the Silver layer in date-partitioned Delta format"""
     (
         df.write
         .format("delta")
@@ -42,7 +42,7 @@ def save_to_silver(df, silver_path):
 
 
 def save_to_gold(aggr_df, gold_path):
-    """Salva os dados agregados na camada Gold em formato Delta."""
+    """Saves aggregated data in the Gold tier in Delta format."""
     (
         aggr_df.write
         .format("delta")
