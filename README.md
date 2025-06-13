@@ -15,10 +15,10 @@ kyc_risk_project-main/
 │   └── er_diagram.jpg
 │
 ├── notebooks/ # Test notebooks for each pipeline stage
-│   ├── 01_ingestion_test.ipynb
-│   ├── 02_processing_test.ipynb
-│   ├── 03_orchestration_test.ipynb
-│
+│   ├── 01_ingestion_raw_data.ipynb
+│   ├── 02_processing_silver.ipynb
+│   ├── 03_orchestration_gold.ipynb
+|
 ├── scripts/ # Python scripts for ingestion, processing, and orchestration
 │   ├── 00_ingestion.py
 │   ├── 01_utils.py
@@ -52,3 +52,4 @@ Architecture diagrams and flow are available in the docs/ folder, including:
 
 ### Author
 Julia Bento
+
