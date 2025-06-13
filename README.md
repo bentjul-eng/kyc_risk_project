@@ -17,7 +17,7 @@ kyc_risk_project-main/
 ├── notebooks/ # Test notebooks for each pipeline stage
 │   ├── 01_ingestion_raw_data.ipynb
 │   ├── 02_processing_silver.ipynb
-│   ├── 03_orchestration_gold.ipynb
+│   ├── 03_processing_gold.ipynb
 |
 ├── scripts/ # Python scripts for ingestion, processing, and orchestration
 │   ├── 00_ingestion.py
