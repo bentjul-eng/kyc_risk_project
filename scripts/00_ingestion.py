@@ -83,7 +83,7 @@ high_risk_sample = random.sample(countries, n_high_risk_countries)
 high_risk = [(c,) for c in high_risk_sample]
 
 high_risk_schema = StructType([
-    StructField("country_name", StringType(), False)
+    StructField("high_risk_country", StringType(), False)
 ])
 
 high_risk_df = spark.createDataFrame(high_risk, schema=high_risk_schema)
