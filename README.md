@@ -65,7 +65,6 @@ To enhance automation, scalability, and AI-driven decision-making, future iterat
 
 - Secrets and environment config management via Azure Key Vault
 
-- Enhanced data lineage and governance with Purview (optional)
 
 #### Documentation
 All relevant diagrams are available in the docs/ folder:
