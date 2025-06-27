@@ -61,9 +61,7 @@ Intermediate table where each transaction is enriched with risk-related variable
 | date_birth                       | INT      | Customer date birth                                                             |
 | country                   | STRING   | Country of residence                                                       |
 | transaction_amount        | DECIMAL(15,2)    | Transaction value                                                          |
-| is_high_risk_country      | BOOLEAN  | True if the country is listed as high-risk                                |
--- VER| is_high_value_transaction | INT    | Flag (1/0) for transactions over 10,000                                    |
--- VER | is_minor                  | INT      | Flag (1/0) if the customer is under 18                                     |
+| is_high_risk_country      | BOOLEAN  | True if the country is listed as high-risk                   |                                     
 | risk_score                | DECIMAL(3,2)    | Calculated score based on the above variables                              |
 | risk_flag                 | BOOLEAN  | True if the score is 2 or higher                                           |
 | evaluation_timestamp      | DATE     | Evaluation date                                                            |
@@ -91,6 +89,5 @@ Final consolidated table with client-level risk indicators.
 | total_high_risk_transactions | INT      | Number of transactions flagged as high-risk                  |
 | max_risk_score         | DECIMAL(3,2)    | Highest risk score observed                                   |
 | ever_high_risk_country | BOOLEAN  | True if the customer ever transacted from a high-risk country |
-| is_minor               | BOOLEAN     | Flag if the customer was underage in any transaction          |
 | high_risk_ratio        | DECIMAL(5,2)    | Ratio of high-risk transactions (high_risk / total)           |
 
