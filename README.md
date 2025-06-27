@@ -2,7 +2,7 @@
 
 ---
 
-This project aims to build a modular and scalable data pipeline for KYC (Know Your Customer) risk assessment, using data engineering tools such as Python, PySpark, and full integration with Azure Cloud services and Power BI for analytics.
+This project aims to build a modular and scalable data pipeline for KYC (Know Your Customer) risk, using data engineering tools such as Python, PySpark, and full integration with Azure Cloud services and Power BI for analytics.
 
 ---
 
@@ -79,4 +79,3 @@ All relevant diagrams are available in the docs/ folder:
 Julia Bento
 
 
-inkedIn | GitHub

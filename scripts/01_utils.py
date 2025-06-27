@@ -29,9 +29,8 @@ def load_bronze_data(spark, bronze_path):
 
     return clients_df, transactions_df, high_risk_countries_df
 
-
 def save_to_silver(df, silver_path):
-    """Saves the enriched data in the Silver layer in date-partitioned Delta format"""
+    """Save enriched data to Silver layer in date-partitioned Delta format"""
     (
         df.write
         .format("delta")
@@ -40,12 +39,11 @@ def save_to_silver(df, silver_path):
         .save(f"{silver_path}/client_transactions_risk")
     )
 
-
 def save_to_gold(aggr_df, gold_path):
-    """Saves aggregated data in the Gold tier in Delta format."""
+    """Save aggregated client risk metrics to Gold layer in Delta format."""
     (
         aggr_df.write
         .format("delta")
         .mode("overwrite")
         .save(f"{gold_path}/aggregated_client_risk")
-                    )
+    )

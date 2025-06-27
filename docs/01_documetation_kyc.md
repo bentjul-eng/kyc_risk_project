@@ -22,9 +22,10 @@ Synthetic CSV files used as the input layer for data ingestion.
 | Column     | Type   | Description                        |
 |------------|--------|------------------------------------|
 | client_id  | INT    | Unique customer identifier         |
-| name       | STRING | Full name                          |
-| age        | INT    | Customer's age                     |
-| country    | STRING | Country of residence               |
+| first_name| STRING | First name                          |
+| last_name | STRING | Last Name
+| date_birth | DATE    | Customer's Date Birth             |
+| residency_country    | STRING | Country of residence               |
 
 ---
 
@@ -34,7 +35,7 @@ Synthetic CSV files used as the input layer for data ingestion.
 |---------------------|--------|-------------------------------------------|
 | transaction_id      | INT    | Unique transaction identifier             |
 | client_id           | INT    | Foreign key referencing the customer      |
-| transaction_amount  | FLOAT  | Value of the transaction                  |
+| transaction_amount  | DECIMAL(15,2)  | Value of the transaction                  |
 | transaction_date    | DATE   | Date the transaction occurred             |
 
 ---
@@ -57,13 +58,11 @@ Intermediate table where each transaction is enriched with risk-related variable
 |---------------------------|----------|----------------------------------------------------------------------------|
 | client_id                 | INT      | Customer identifier                                                        |
 | transaction_id            | INT      | Transaction identifier                                                     |
-| age                       | INT      | Customer age                                                               |
+| date_birth                       | INT      | Customer date birth                                                             |
 | country                   | STRING   | Country of residence                                                       |
-| transaction_amount        | FLOAT    | Transaction value                                                          |
-| is_high_risk_country      | BOOLEAN  | True if the country is listed as high-risk                                |
-| is_high_value_transaction | INT      | Flag (1/0) for transactions over 10,000                                    |
-| is_minor                  | INT      | Flag (1/0) if the customer is under 18                                     |
-| risk_score                | FLOAT    | Calculated score based on the above variables                              |
+| transaction_amount        | DECIMAL(15,2)    | Transaction value                                                          |
+| is_high_risk_country      | BOOLEAN  | True if the country is listed as high-risk                   |                                     
+| risk_score                | DECIMAL(3,2)    | Calculated score based on the above variables                              |
 | risk_flag                 | BOOLEAN  | True if the score is 2 or higher                                           |
 | evaluation_timestamp      | DATE     | Evaluation date                                                            |
 | event_id                  | STRING   | Unique risk event ID (concatenation of client_id and transaction_id)       |
@@ -86,10 +85,9 @@ Final consolidated table with client-level risk indicators.
 |------------------------|----------|---------------------------------------------------------------|
 | client_id              | INT      | Customer identifier                                           |
 | total_transactions     | INT      | Total number of transactions                                  |
-| total_amount           | FLOAT    | Sum of all transaction amounts                                |
-| high_risk_transactions | INT      | Number of transactions flagged as high-risk                  |
-| max_risk_score         | FLOAT    | Highest risk score observed                                   |
+| total_amount           | DECIMAL(15,2)    | Sum of all transaction amounts                                |
+| total_high_risk_transactions | INT      | Number of transactions flagged as high-risk                  |
+| max_risk_score         | DECIMAL(3,2)    | Highest risk score observed                                   |
 | ever_high_risk_country | BOOLEAN  | True if the customer ever transacted from a high-risk country |
-| is_minor               | INT      | Flag if the customer was underage in any transaction          |
-| high_risk_ratio        | FLOAT    | Ratio of high-risk transactions (high_risk / total)           |
+| high_risk_ratio        | DECIMAL(5,2)    | Ratio of high-risk transactions (high_risk / total)           |
 
