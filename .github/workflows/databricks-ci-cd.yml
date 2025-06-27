@@ -1,0 +1,25 @@
+name: Deploy Notebooks to Databricks
+
+on:
+  push:
+    branches:
+      - main
+      - feature/**
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Databricks CLI
+        uses: databricks/setup-cli@v1
+
+      - name: Upload notebooks to workspace
+        run: |
+          databricks workspace import-dir notebooks/Workspace/KYC_Risk_Project --overwrite
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
