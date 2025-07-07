@@ -7,7 +7,7 @@
 
 This project aims to build a modular and scalable data pipeline for KYC (Know Your Customer) risk analysis, using modern data engineering tools such as Python, PySpark, and full integration with Azure Cloud services and Power BI for analytics.
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 kyc_risk_project-main/
@@ -31,15 +31,15 @@ kyc_risk_project-main/
     └── 03_orchestration.py
 ```
 
-## ✨ Current Features
+##  Current Features
 
-- 📊 **Data Ingestion**: Ingestion of simulated KYC data from structured CSVs
-- 🎯 **Risk Classification**: Pipeline using business rules for risk assessment
-- 🔍 **Data Quality**: Comprehensive checks and transformation layers (Bronze, Silver, Gold)
-- 🏗️ **Modular Architecture**: Enables orchestration through notebooks or CLI
-- 📈 **Visual Documentation**: ER diagram and Azure architecture draft included
+-  **Data Ingestion**: Ingestion of simulated KYC data from structured CSVs
+-  **Risk Classification**: Pipeline using business rules for risk assessment
+-  **Data Quality**: Comprehensive checks and transformation layers (Bronze, Silver, Gold)
+-  **Modular Architecture**: Enables orchestration through notebooks or CLI
+-  **Visual Documentation**: ER diagram and Azure architecture draft included
 
-## 🚀 Usage
+##  Usage
 
 The pipeline was designed to be executed in:
 
@@ -57,7 +57,7 @@ Through Databricks workflow, which runs the Databricks notebooks as pipeline act
 
 > **Note**: The `requirements.txt` file should be generated once dependencies are finalized.
 
-## 🛠️ Technology Stack
+##  Technology Stack
 
 - **Data Processing**: PySpark, Python
 - **Cloud Platform**: Microsoft Azure
@@ -67,26 +67,26 @@ Through Databricks workflow, which runs the Databricks notebooks as pipeline act
 - **Analytics**: Power BI
 - **Version Control**: Git, GitHub
 
-## 🔮 Future Improvements
+## Future Improvements
 
 To enhance automation, scalability, and AI-driven decision-making, future iterations will include:
 
-- 🔄 **CI/CD Pipeline**: Deployment via GitHub Actions to Azure
-- ☁️ **Full Azure Integration**: Complete orchestration between Data Factory, Databricks, and Azure Storage
-- 🤖 **ML-based Risk Scoring**: Using Azure Machine Learning for advanced analytics
-- 📊 **Monitoring & Logging**: Azure Monitor and Log Analytics integration
-- 🔐 **Security**: Secrets and environment config management via Azure Key Vault
-- 🧪 **Testing**: Automated testing and data validation frameworks
+-  **CI/CD Pipeline**: Deployment via GitHub Actions to Azure
+-  **Full Azure Integration**: Complete orchestration between Data Factory, Databricks, and Azure Storage
+-  **ML-based Risk Scoring**: Using Azure Machine Learning for advanced analytics
+-  **Monitoring & Logging**: Azure Monitor and Log Analytics integration
+-  **Security**: Secrets and environment config management via Azure Key Vault
+-  **Testing**: Automated testing and data validation frameworks
 
-## 📚 Documentation
+##  Documentation
 
 All relevant diagrams and documentation are available in the `docs/` folder:
 
-- 📋 **KYC Documentation**: Project overview
-- 🗺️ **ER Diagram**: Database schema and relationships
-- 🏗️ **Azure Flow Design**: Cloud architecture blueprint
+-  **KYC Documentation**: Project overview
+-  **ER Diagram**: Database schema and relationships
+-  **Azure Flow Design**: Cloud architecture blueprint
 
-## 🏗️ Architecture Overview
+##  Architecture Overview
 
 ```mermaid
 graph TB
@@ -99,7 +99,7 @@ graph TB
     F --> H[Azure ML]
 ```
 
-## 🤝 Contributing
+##  Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/**`)
@@ -108,7 +108,7 @@ graph TB
 5. Open a Pull Request
 
 
-## 👩‍💻 Author
+##  Author
 
 **Julia Bento**
 
