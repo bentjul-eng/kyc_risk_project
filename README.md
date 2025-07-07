@@ -41,7 +41,7 @@ kyc_risk_project-main/
 
 ## 🚀 Usage
 
-The pipeline was designed to be executed in two ways:
+The pipeline was designed to be executed in:
 
 ### 1. CLI Execution
 Using the modular Python scripts directly:
@@ -50,12 +50,10 @@ Using the modular Python scripts directly:
 # Install dependencies
 pip install -r requirements.txt
 
-# Run the pipeline
-python scripts/03_orchestration.py
 ```
 
-### 2. Azure Data Factory (ADF) Orchestration
-Through Azure Data Factory, which runs the Databricks notebooks as pipeline activities.
+### 2. Azure Databricks (Orchestration)
+Through Databricks workflow, which runs the Databricks notebooks as pipeline activities.
 
 > **Note**: The `requirements.txt` file should be generated once dependencies are finalized.
 
@@ -84,7 +82,7 @@ To enhance automation, scalability, and AI-driven decision-making, future iterat
 
 All relevant diagrams and documentation are available in the `docs/` folder:
 
-- 📋 **KYC Documentation**: Comprehensive project overview
+- 📋 **KYC Documentation**: Project overview
 - 🗺️ **ER Diagram**: Database schema and relationships
 - 🏗️ **Azure Flow Design**: Cloud architecture blueprint
 
@@ -104,21 +102,18 @@ graph TB
 ## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
+2. Create a feature branch (`git checkout -b feature/**`)
+3. Commit your changes (`git commit -m 'Add feature'`)
+4. Push to the branch (`git push origin feature/***`)
 5. Open a Pull Request
 
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 👩‍💻 Author
 
 **Julia Bento**
 
 - GitHub: [@juliabento](https://github.com/juliabento)
-- LinkedIn: [Julia Bento](https://linkedin.com/in/juliabento)
+- LinkedIn: [Julia Bento](https://linkedin.com/in/julia-soares-bento)
 
 ---
 
