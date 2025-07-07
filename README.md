@@ -112,7 +112,7 @@ graph TB
 
 **Julia Bento**
 
-- GitHub: [@juliabento](https://github.com/juliabento)
+- GitHub: [@juliabento](https://github.com/bentjul-eng)
 - LinkedIn: [Julia Bento](https://linkedin.com/in/julia-soares-bento)
 
 ---
