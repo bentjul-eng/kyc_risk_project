@@ -1,81 +1,125 @@
 # KYC Risk Project
 
----
+[![Python](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![PySpark](https://img.shields.io/badge/pyspark-3.x-orange.svg)](https://spark.apache.org/docs/latest/api/python/)
+[![Azure](https://img.shields.io/badge/azure-cloud-blue.svg)](https://azure.microsoft.com/)
+[![Databricks](https://img.shields.io/badge/databricks-platform-red.svg)](https://databricks.com/)
 
-This project aims to build a modular and scalable data pipeline for KYC (Know Your Customer) risk, using data engineering tools such as Python, PySpark, and full integration with Azure Cloud services and Power BI for analytics.
+This project aims to build a modular and scalable data pipeline for KYC (Know Your Customer) risk analysis, using modern data engineering tools such as Python, PySpark, and full integration with Azure Cloud services and Power BI for analytics.
 
----
+## 📁 Project Structure
 
-## Project Structure
-
+```
 kyc_risk_project-main/
 │
-├── README.md # Main project description
+├── README.md                          # Main project description
 │
-├── docs/ # Project documentation
-│ ├── 01_documetation_kyc.md
-│ ├── fluxo_azure_ready.png
-│ └── er_diagram.jpg
+├── docs/                              # Project documentation
+│   ├── 01_documetation_kyc.md
+│   ├── fluxo_azure_ready.png
+│   └── er_diagram.jpg
 │
-├── notebooks/ # Databricks notebooks for each pipeline stage
-│ ├── 01_ingestion_raw_data.ipynb
-│ ├── 02_processing_silver.ipynb
-│ ├── 03_processing_gold.ipynb
+├── notebooks/                         # Databricks notebooks for each pipeline stage
+│   ├── 01_ingestion_raw_data.ipynb
+│   ├── 02_processing_silver.ipynb
+│   └── 03_processing_gold.ipynb
 │
-├── scripts/ # Python modules for CLI-based pipeline execution
-│ ├── 00_ingestion.py
-│ ├── 01_utils.py
-│ ├── 02_processing.py
-│ └── 03_orchestration.py
+└── scripts/                           # Python modules for CLI-based pipeline execution
+    ├── 00_ingestion.py
+    ├── 01_utils.py
+    ├── 02_processing.py
+    └── 03_orchestration.py
+```
 
----
+## ✨ Current Features
 
-##  Current Features
+- 📊 **Data Ingestion**: Ingestion of simulated KYC data from structured CSVs
+- 🎯 **Risk Classification**: Pipeline using business rules for risk assessment
+- 🔍 **Data Quality**: Comprehensive checks and transformation layers (Bronze, Silver, Gold)
+- 🏗️ **Modular Architecture**: Enables orchestration through notebooks or CLI
+- 📈 **Visual Documentation**: ER diagram and Azure architecture draft included
 
-- Ingestion of simulated KYC data from structured CSVs  
-- Risk classification pipeline using business rules  
-- Data quality checks and transformation layers (Bronze, Silver, Gold)  
-- Modular architecture that enables orchestration through notebooks or CLI  
-- Visual ER diagram and Azure architecture draft
+## 🚀 Usage
 
----
+The pipeline was designed to be executed in two ways:
 
-##  Usage
-
-The pipeline was designed to be executed either:
-
-- **Via CLI**, using the modular Python scripts
-- **Orchestrated through Azure Data Factory (ADF)**, which runs the Databricks notebooks as pipeline activities
+### 1. CLI Execution
+Using the modular Python scripts directly:
 
 ```bash
+# Install dependencies
 pip install -r requirements.txt
+
+# Run the pipeline
+python scripts/03_orchestration.py
 ```
-Note: The requirements.txt file should be generated once dependencies are finalized.
 
-#### Future Improvements
-To enhance automation, scalability, and AI-driven decision-making, future iterations of this project will include:
+### 2. Azure Data Factory (ADF) Orchestration
+Through Azure Data Factory, which runs the Databricks notebooks as pipeline activities.
 
-- Deployment via GitHub Actions using CI/CD workflows to Azure
+> **Note**: The `requirements.txt` file should be generated once dependencies are finalized.
 
-- Full orchestration in Azure with integration between Data Factory, Databricks, and Azure Storage
+## 🛠️ Technology Stack
 
-- ML-based risk scoring using Azure Machine Learning
+- **Data Processing**: PySpark, Python
+- **Cloud Platform**: Microsoft Azure
+- **Data Storage**: Azure Data Lake Storage, Delta Lake
+- **Compute**: Azure Databricks
+- **Orchestration**: Azure Data Factory
+- **Analytics**: Power BI
+- **Version Control**: Git, GitHub
 
-- Monitoring and logging with Azure Monitor and Log Analytics
+## 🔮 Future Improvements
 
-- Secrets and environment config management via Azure Key Vault
+To enhance automation, scalability, and AI-driven decision-making, future iterations will include:
 
+- 🔄 **CI/CD Pipeline**: Deployment via GitHub Actions to Azure
+- ☁️ **Full Azure Integration**: Complete orchestration between Data Factory, Databricks, and Azure Storage
+- 🤖 **ML-based Risk Scoring**: Using Azure Machine Learning for advanced analytics
+- 📊 **Monitoring & Logging**: Azure Monitor and Log Analytics integration
+- 🔐 **Security**: Secrets and environment config management via Azure Key Vault
+- 🧪 **Testing**: Automated testing and data validation frameworks
 
-#### Documentation
-All relevant diagrams are available in the docs/ folder:
+## 📚 Documentation
 
-- KYC Documentation
+All relevant diagrams and documentation are available in the `docs/` folder:
 
-- ER Diagram
+- 📋 **KYC Documentation**: Comprehensive project overview
+- 🗺️ **ER Diagram**: Database schema and relationships
+- 🏗️ **Azure Flow Design**: Cloud architecture blueprint
 
-- Azure Flow Design
+## 🏗️ Architecture Overview
 
-> Author
-Julia Bento
+```mermaid
+graph TB
+    A[Data Sources] --> B[Azure Data Factory]
+    B --> C[Azure Databricks]
+    C --> D[Bronze Layer]
+    D --> E[Silver Layer]
+    E --> F[Gold Layer]
+    F --> G[Power BI]
+    F --> H[Azure ML]
+```
 
+## 🤝 Contributing
 
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 👩‍💻 Author
+
+**Julia Bento**
+
+- GitHub: [@juliabento](https://github.com/juliabento)
+- LinkedIn: [Julia Bento](https://linkedin.com/in/juliabento)
+
+---
+
+⭐ **Star this repository if you find it helpful!**
